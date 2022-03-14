@@ -16,12 +16,30 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
+let pilotName = document.getElementById("pilotName");
+let copilotName = document.getElementById("copilotName");;
+let fuelLevelAmnt = document.getElementById("fuelLevel");;
+let cargoMass = document.getElementById("cargoMass");;
+
 function validateInput(testInput) {
-   
+    let response = "";
+    if(testInput === ) {
+        response = "Empty";
+        return response;
+    } else if(testInput === ) {
+        response = "Not a Number";
+        return response;
+    } else if(testInput === ) {
+        response = "Is a Number";
+        return response;
+    }
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-   
+    let form = document.getElementById("testForm");
+    form.addEventListener("submit", funtion() {
+        
+    }
 }
 
 async function myFetch() {
