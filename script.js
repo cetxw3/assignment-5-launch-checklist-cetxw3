@@ -17,7 +17,7 @@ window.addEventListener("load", function() {
     console.log(destinationInfo);
    })
 
-    let form = document.getElementById("launchForm");
+    let form = document.querySelector("form")
     let pilotName = document.querySelector("input[name=pilotName]");
     let copilotName = document.querySelector("input[name=copilotName]");
     let fuelLevelAmnt = document.querySelector("input[name=fuelLevel]");
@@ -31,8 +31,7 @@ window.addEventListener("load", function() {
     console.log(cargoMass.value);
 
     form.addEventListener("submit", function(event) {
-        let formSubmissionVar = formSubmission(document, list, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
-        console.log(formSubmissionVar);
+        formSubmission(window.document, list, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
         event.preventDefault();
     })
 });
