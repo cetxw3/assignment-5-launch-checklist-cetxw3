@@ -22,11 +22,11 @@ window.addEventListener("load", function() {
     let copilotName = document.querySelector("input[name=copilotName]");
     let fuelLevelAmnt = document.querySelector("input[name=fuelLevel]");
     let cargoMass = document.querySelector("input[name=cargoMass]");
-    let list = document.querySelector("#faultyItems");
-    list.style.visibility = "hidden";
+    let listVar = document.querySelector("#faultyItems");
+    listVar.style.visibility = "hidden";
     
     form.addEventListener("submit", function(event) {
-        let formSubmissionVar = formSubmission(window.document, list, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
+        let formSubmissionVar = formSubmission(window.document, listVar, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
         if(!formSubmissionVar) {
             event.preventDefault();
         }
