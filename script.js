@@ -1,27 +1,41 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function() {
-
-    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
-      console.log(response.json());
-})
-
-
-
    let listedPlanets;
-   // Set listedPlanetsResponse equal to the value returned by calling myFetch()
-   let listedPlanetsResponse;
+
+   let listedPlanetsResponse = myFetch();
+
    listedPlanetsResponse.then(function (result) {
        listedPlanets = result;
        console.log(listedPlanets);
    }).then(function () {
-       console.log(listedPlanets);
-       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
+  
+    let chosenPlanet = pickPlanet(listedPlanets);
+    console.log(chosenPlanet);
+
+    let destinationInfo = addDestinationInfo(document, chosenPlanet.name, chosenPlanet.diameter, chosenPlanet.star, chosenPlanet.distance, chosenPlanet.moons, chosenPlanet.image);
+    console.log(destinationInfo);
    })
-   preventDefault();
+
+    let form = document.getElementById("launchForm");
+    let pilotName = document.querySelector("input[name=pilotName]");
+    let copilotName = document.querySelector("input[name=copilotName]");
+    let fuelLevelAmnt = document.querySelector("input[name=fuelLevel]");
+    let cargoMass = document.querySelector("input[name=cargoMass]");
+
+    console.log(form);
+    console.log(pilotName.value);
+    console.log(copilotName.value);
+    console.log(fuelLevelAmnt.value);
+    console.log(cargoMass.value);
+
+    form.addEventListener("submit", function(event) {
+        let formSubmissionVar = formSubmission(document, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
+        console.log(formSubmissionVar);
+        if(formSubmissionVar === false) {
+            event.preventDefault();
+        }
+    })
 });
 
-let form = document.getElementById("testForm");
-form.addEventListener("submit", function() {
-    helperModule.formSubmission(/* ??? */);
-})
+

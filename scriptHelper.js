@@ -2,18 +2,19 @@
 require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
-   // Here is the HTML formatting for our mission target div.
-   /*
-                <h2>Mission Destination</h2>
-                <ol>
-                    <li>Name: </li>
-                    <li>Diameter: </li>
-                    <li>Star: ${star}</li>
-                    <li>Distance from Earth: </li>
-                    <li>Number of Moons: </li>
-                </ol>
-                <img src="">
-   */
+   let missionTarget = document.getElementById("missionTarget");
+   missionTarget.innerHTML = `
+        <h2>Mission Destination</h2>
+        <ol>
+            <li>Name: ${name}</li>
+            <li>Diameter: ${diameter}</li>
+            <li>Star: ${star}</li>
+            <li>Distance from Earth: ${distance}</li>
+            <li>Number of Moons: ${moons}</li>
+        </ol>
+        <img src="${imageUrl}">
+        `
+    return `Name: ${name}, Diameter: ${diameter}, Star: ${star}, Distance from Earth: ${distance}, Number of Moons: ${moons}, Image URL: "${imageUrl}"`;
 }
 
 function validateInput(testInput) {
@@ -28,8 +29,62 @@ function validateInput(testInput) {
     }  
 }
 
-function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-
+function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {    
+    if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
+        alert("All fields are required.");
+        return false;
+    }else if(validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number") {
+        alert("Pilot Name and/or Copilot Name must be entered as text only.");
+        return false;
+    } else if(validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
+        alert("Fuel Level and Cargo Mass must be entered as numbers only.");
+        return false;
+    } 
+    let pilotStatus = document.getElementById("pilotStatus");
+    pilotStatus.innerHTML = `
+        <li id="pilotStatus" data-testid="pilotStatus">Pilot (${pilot}) Ready</li>
+    `;
+    let copilotStatus = document.getElementById("copilotStatus");
+    copilotStatus.innerHTML = `
+        <li id="copilotStatus" data-testid="copilotStatus">Co-pilot (${copilot}) Ready</li>
+    `;
+    
+    let faultyItems = document.querySelector("#faultyItems");
+    
+    if(fuelLevel < 10000 && cargoLevel > 10000) {
+        faultyItems.style.visibility = "visible";
+        faultyItems.innerHTML = `
+            <ol>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} Ready</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} Ready</li>
+                <li id="fuelStatus" data-testid="fuelStatus">Fuel level (${fuelLevel} L) insufficient for launch</li>
+                <li id="cargoStatus" data-testid="cargoStatus">Cargo mass (${cargoLevel} kg) too high for launch</li>
+            </ol>
+        `;
+        return false;
+    } else if(fuelLevel < 10000) {
+        faultyItems.style.visibility = "visible";
+        faultyItems.innerHTML = `
+            <ol>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} Ready</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} Ready</li>    
+                <li id="fuelStatus" data-testid="fuelStatus">Fuel level (${fuelLevel} L) insufficient for launch</li>
+                <li id="cargoStatus" data-testid="cargoStatus">Cargo mass low enough for launch</li>
+            </ol>
+        `;
+        return false;
+    } else if(cargoLevel > 10000) {
+        faultyItems.style.visibility = "visible";
+        faultyItems.innerHTML = `
+            <ol>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} Ready</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} Ready</li>     
+                <li id="fuelStatus" data-testid="fuelStatus">Fuel level high enough for launch</li>
+                <li id="fuelStatus" data-testid="fuelStatus">Cargo mass (${cargoLevel} kg) too high for launch</li>
+            </ol>
+        `;
+        return false;
+    }
 }
 
 async function myFetch() {
