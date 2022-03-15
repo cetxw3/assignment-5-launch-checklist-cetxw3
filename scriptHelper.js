@@ -53,20 +53,20 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     copilotStatus.textContent = `Co-pilot ${copilot} is ready for launch`;
     
     if(fuelLevel < 10000 && cargoLevel > 10000) {
-        launchStatusText.textContent = "Shuttle not ready for launch";
+        launchStatusText.textContent = "Shuttle Not Ready for Launch";
         launchStatusStyle.style.color = "rgb(199, 37, 78)";
         list.style.visibility = "visible";
         fuelStatus.textContent = `Fuel level insufficient for launch`;
         cargoStatus.textContent = `Cargo mass too high for launch`;
         return false;
     } else if(fuelLevel < 10000) {
-        launchStatusText.innerText = "Shuttle not ready for launch";
+        launchStatusText.innerText = "Shuttle Not Ready for Launch";
         launchStatusStyle.style.color = "rgb(199, 37, 78)";
         list.style.visibility = "visible";
         fuelStatus.textContent = `Fuel level insufficient for launch`;
         return false;
     } else if(cargoLevel > 10000) {
-        launchStatusText.innerText = "Shuttle not ready for launch";
+        launchStatusText.innerText = "Shuttle Not Ready for Launch";
         launchStatusStyle.style.color = "rgb(199, 37, 78)";
         list.style.visibility = "visible";
         cargoStatus.textContent = `Cargo mass too high for launch`;
@@ -75,6 +75,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         launchStatusText.textContent = "Shuttle is ready for launch";
         launchStatusStyle.style.color = "green";
         list.style.visibility = "hidden";
+        return true;
     }
 }
 
