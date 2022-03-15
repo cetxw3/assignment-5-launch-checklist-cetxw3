@@ -23,6 +23,7 @@ window.addEventListener("load", function() {
     let fuelLevelAmnt = document.querySelector("input[name=fuelLevel]");
     let cargoMass = document.querySelector("input[name=cargoMass]");
     let list = document.querySelector("#faultyItems");
+    list.style.visibility = "hidden";
 
     console.log(form);
     console.log(pilotName.value);
