@@ -32,9 +32,7 @@ window.addEventListener("load", function() {
     form.addEventListener("submit", function(event) {
         let formSubmissionVar = formSubmission(document, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
         console.log(formSubmissionVar);
-        if(formSubmissionVar === false) {
-            event.preventDefault();
-        }
+        event.preventDefault();
     })
 });
 

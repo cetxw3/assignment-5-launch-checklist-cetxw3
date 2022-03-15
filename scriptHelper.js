@@ -50,40 +50,52 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     `;
     
     let faultyItems = document.querySelector("#faultyItems");
+    let launchStatusText = document.getElementById("launchStatus");
+    let launchStatusStyle = document.querySelector("#launchStatus");
     
     if(fuelLevel < 10000 && cargoLevel > 10000) {
+        launchStatusText.innerText = "Shuttle not ready for launch";
+        launchStatusStyle.style.color = "red";
         faultyItems.style.visibility = "visible";
         faultyItems.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} Ready</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} Ready</li>
-                <li id="fuelStatus" data-testid="fuelStatus">Fuel level (${fuelLevel} L) insufficient for launch</li>
-                <li id="cargoStatus" data-testid="cargoStatus">Cargo mass (${cargoLevel} kg) too high for launch</li>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>
+                <li id="fuelStatus" data-testid="fuelStatus" style="color:red;">Fuel level (${fuelLevel} L) insufficient for launch</li>
+                <li id="cargoStatus" data-testid="cargoStatus" style="color:red;">Cargo mass (${cargoLevel} kg) too high for launch</li>
             </ol>
         `;
         return false;
     } else if(fuelLevel < 10000) {
+        launchStatusText.innerText = "Shuttle not ready for launch";
+        launchStatusStyle.style.color = "red";
         faultyItems.style.visibility = "visible";
         faultyItems.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} Ready</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} Ready</li>    
-                <li id="fuelStatus" data-testid="fuelStatus">Fuel level (${fuelLevel} L) insufficient for launch</li>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>    
+                <li id="fuelStatus" data-testid="fuelStatus" style="color:red;">Fuel level (${fuelLevel} L) insufficient for launch</li>
                 <li id="cargoStatus" data-testid="cargoStatus">Cargo mass low enough for launch</li>
             </ol>
         `;
         return false;
     } else if(cargoLevel > 10000) {
+        launchStatusText.innerText = "Shuttle not ready for launch";
+        launchStatusStyle.style.color = "red";
         faultyItems.style.visibility = "visible";
         faultyItems.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} Ready</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} Ready</li>     
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>     
                 <li id="fuelStatus" data-testid="fuelStatus">Fuel level high enough for launch</li>
-                <li id="fuelStatus" data-testid="fuelStatus">Cargo mass (${cargoLevel} kg) too high for launch</li>
+                <li id="fuelStatus" data-testid="fuelStatus" style="color:red;">Cargo mass (${cargoLevel} kg) too high for launch</li>
             </ol>
         `;
         return false;
+    } else {
+        launchStatusText.innerText = "Shuttle is ready for launch";
+        launchStatusStyle.style.color = "green";
+        faultyItems.style.visibility = "hidden";
     }
 }
 
