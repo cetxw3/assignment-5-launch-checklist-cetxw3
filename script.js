@@ -30,6 +30,9 @@ window.addEventListener("load", function() {
         if(!formSubmissionVar) {
             event.preventDefault();
         }
+        if(formSubmissionVar) {
+            event.preventDefault();
+        }
     })
 });
 
