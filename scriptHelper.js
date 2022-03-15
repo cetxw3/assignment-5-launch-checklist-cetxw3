@@ -16,42 +16,37 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
    */
 }
 
-let pilotName = document.getElementById("pilotName");
-let copilotName = document.getElementById("copilotName");;
-let fuelLevelAmnt = document.getElementById("fuelLevel");;
-let cargoMass = document.getElementById("cargoMass");;
-
 function validateInput(testInput) {
-    let response = "";
-    if(testInput === ) {
-        response = "Empty";
-        return response;
-    } else if(testInput === ) {
-        response = "Not a Number";
-        return response;
-    } else if(testInput === ) {
-        response = "Is a Number";
-        return response;
+    if(testInput === "") {
+        return "Empty";
+    } 
+    if(isNaN(testInput)) {
+      return "Not a Number";
     }
+    if(!isNaN(testInput)) {
+      return "Is a Number";
+    }  
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let form = document.getElementById("testForm");
-    form.addEventListener("submit", funtion() {
-        
-    }
+
 }
 
 async function myFetch() {
     let planetsReturned;
 
-    planetsReturned = await fetch().then( function(response) {
+    planetsReturned = await fetch("https://handlers.education.launchcode.org/static/planets.json").then( function(response) {
+        return response.json();
         });
 
     return planetsReturned;
 }
 
 function pickPlanet(planets) {
+    for(let i = 0; i < planets.length; i++) {
+        let num = Math.floor(Math.random() * planets.length);
+        return planets[num];
+    }
 }
 
 module.exports.addDestinationInfo = addDestinationInfo;
