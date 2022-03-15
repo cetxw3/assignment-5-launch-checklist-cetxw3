@@ -24,16 +24,12 @@ window.addEventListener("load", function() {
     let cargoMass = document.querySelector("input[name=cargoMass]");
     let list = document.querySelector("#faultyItems");
     list.style.visibility = "hidden";
-
-    console.log(form);
-    console.log(pilotName.value);
-    console.log(copilotName.value);
-    console.log(fuelLevelAmnt.value);
-    console.log(cargoMass.value);
-
+    
     form.addEventListener("submit", function(event) {
-        formSubmission(window.document, list, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
-        event.preventDefault();
+        let formSubmissionVar = formSubmission(window.document, list, pilotName.value, copilotName.value, fuelLevelAmnt.value, cargoMass.value);
+        if(!formSubmissionVar) {
+            event.preventDefault();
+        }
     })
 });
 
