@@ -42,13 +42,9 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     } 
     
     let pilotStatus = document.getElementById("pilotStatus");
-    pilotStatus.innerHTML = `
-        <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} is ready for launch</li>
-    `;
+    pilotStatus.innerHTML = `<li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} is ready for launch</li>`;
     let copilotStatus = document.getElementById("copilotStatus");
-    copilotStatus.innerHTML = `
-        <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} is ready for launch</li>
-    `;
+    copilotStatus.innerHTML = `<li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} is ready for launch</li>`;
 
     let launchStatusText = document.getElementById("launchStatus");
     let launchStatusStyle = document.querySelector("#launchStatus");
