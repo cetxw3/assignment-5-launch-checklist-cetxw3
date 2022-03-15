@@ -29,7 +29,7 @@ function validateInput(testInput) {
     }  
 }
 
-function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {    
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {    
     if(validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         alert("All fields are required.");
         return false;
@@ -48,16 +48,15 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     copilotStatus.innerHTML = `
         <li id="copilotStatus" data-testid="copilotStatus">Co-pilot (${copilot}) Ready</li>
     `;
-    
-    let faultyItems = document.querySelector("#faultyItems");
+
     let launchStatusText = document.getElementById("launchStatus");
     let launchStatusStyle = document.querySelector("#launchStatus");
     
     if(fuelLevel < 10000 && cargoLevel > 10000) {
         launchStatusText.innerText = "Shuttle not ready for launch";
         launchStatusStyle.style.color = "red";
-        faultyItems.style.visibility = "visible";
-        faultyItems.innerHTML = `
+        list.style.visibility = "visible";
+        list.innerHTML = `
             <ol>
                 <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
                 <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>
@@ -69,8 +68,8 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     } else if(fuelLevel < 10000) {
         launchStatusText.innerText = "Shuttle not ready for launch";
         launchStatusStyle.style.color = "red";
-        faultyItems.style.visibility = "visible";
-        faultyItems.innerHTML = `
+        list.style.visibility = "visible";
+        list.innerHTML = `
             <ol>
                 <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
                 <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>    
@@ -82,8 +81,8 @@ function formSubmission(document, pilot, copilot, fuelLevel, cargoLevel) {
     } else if(cargoLevel > 10000) {
         launchStatusText.innerText = "Shuttle not ready for launch";
         launchStatusStyle.style.color = "red";
-        faultyItems.style.visibility = "visible";
-        faultyItems.innerHTML = `
+        list.style.visibility = "visible";
+        list.innerHTML = `
             <ol>
                 <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
                 <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>     
