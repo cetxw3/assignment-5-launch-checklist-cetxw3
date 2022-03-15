@@ -40,13 +40,14 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         alert("Fuel Level and Cargo Mass must be entered as numbers only.");
         return false;
     } 
+    
     let pilotStatus = document.getElementById("pilotStatus");
     pilotStatus.innerHTML = `
-        <li id="pilotStatus" data-testid="pilotStatus">Pilot (${pilot}) Ready</li>
+        <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} is ready for launch</li>
     `;
     let copilotStatus = document.getElementById("copilotStatus");
     copilotStatus.innerHTML = `
-        <li id="copilotStatus" data-testid="copilotStatus">Co-pilot (${copilot}) Ready</li>
+        <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} is ready for launch</li>
     `;
 
     let launchStatusText = document.getElementById("launchStatus");
@@ -58,8 +59,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = "visible";
         list.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> is ready for launch</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> is ready for launch</li>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} is ready for launch</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} is ready for launch</li>
                 <li id="fuelStatus" data-testid="fuelStatus" style="color:rgb(199, 37, 78);">Fuel level (${fuelLevel} L) insufficient for launch</li>
                 <li id="cargoStatus" data-testid="cargoStatus" style="color:rgb(199, 37, 78);">Cargo mass (${cargoLevel} kg) too high for launch</li>
             </ol>
@@ -71,8 +72,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = "visible";
         list.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> is ready for launch</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> is ready for launch</li>    
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} is ready for launch</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} is ready for launch</li>    
                 <li id="fuelStatus" data-testid="fuelStatus" style="color:rgb(199, 37, 78);">Fuel level (${fuelLevel} L) insufficient for launch</li>
                 <li id="cargoStatus" data-testid="cargoStatus">Cargo mass low enough for launch</li>
             </ol>
@@ -84,8 +85,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = "visible";
         list.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> is ready for launch</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> is ready for launch</li>     
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot} is ready for launch</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot ${copilot} is ready for launch</li>     
                 <li id="fuelStatus" data-testid="fuelStatus">Fuel level high enough for launch</li>
                 <li id="fuelStatus" data-testid="fuelStatus" style="color:rgb(199, 37, 78);">Cargo mass (${cargoLevel} kg) too high for launch</li>
             </ol>
