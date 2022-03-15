@@ -58,8 +58,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = "visible";
         list.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> is ready for launch</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> is ready for launch</li>
                 <li id="fuelStatus" data-testid="fuelStatus" style="color:rgb(199, 37, 78);">Fuel level (${fuelLevel} L) insufficient for launch</li>
                 <li id="cargoStatus" data-testid="cargoStatus" style="color:rgb(199, 37, 78);">Cargo mass (${cargoLevel} kg) too high for launch</li>
             </ol>
@@ -71,8 +71,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = "visible";
         list.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>    
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> is ready for launch</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> is ready for launch</li>    
                 <li id="fuelStatus" data-testid="fuelStatus" style="color:rgb(199, 37, 78);">Fuel level (${fuelLevel} L) insufficient for launch</li>
                 <li id="cargoStatus" data-testid="cargoStatus">Cargo mass low enough for launch</li>
             </ol>
@@ -84,8 +84,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         list.style.visibility = "visible";
         list.innerHTML = `
             <ol>
-                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> Ready</li>
-                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> Ready</li>     
+                <li id="pilotStatus" data-testid="pilotStatus">Pilot <b>${pilot}</b> is ready for launch</li>
+                <li id="copilotStatus" data-testid="copilotStatus">Co-pilot <b>${copilot}</b> is ready for launch</li>     
                 <li id="fuelStatus" data-testid="fuelStatus">Fuel level high enough for launch</li>
                 <li id="fuelStatus" data-testid="fuelStatus" style="color:rgb(199, 37, 78);">Cargo mass (${cargoLevel} kg) too high for launch</li>
             </ol>
