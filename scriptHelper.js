@@ -48,33 +48,35 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     let launchStatusText = document.getElementById("launchStatus");
     let launchStatusStyle = document.querySelector("#launchStatus");
-    
+
+    let listVar = document.querySelector("#faultyItems");
+        
     pilotStatus.textContent = `Pilot ${pilot} is ready for launch`;
     copilotStatus.textContent = `Co-pilot ${copilot} is ready for launch`;
     
     if(fuelLevel < 10000 && cargoLevel > 10000) {
         launchStatusText.textContent = "Shuttle Not Ready for Launch";
         launchStatusStyle.style.color = "rgb(199, 37, 78)";
-        list.style.visibility = "visible";
+        listVar.style.visibility = "visible";
         fuelStatus.textContent = `Fuel level too low for launch`;
         cargoStatus.textContent = `Cargo mass too heavy for launch`;
         return false;
     } else if(fuelLevel < 10000) {
         launchStatusText.innerText = "Shuttle Not Ready for Launch";
         launchStatusStyle.style.color = "rgb(199, 37, 78)";
-        list.style.visibility = "visible";
+        listVar.style.visibility = "visible";
         fuelStatus.textContent = `Fuel level too low for launch`;
         return false;
     } else if(cargoLevel > 10000) {
         launchStatusText.innerText = "Shuttle Not Ready for Launch";
         launchStatusStyle.style.color = "rgb(199, 37, 78)";
-        list.style.visibility = "visible";
+        listVar.style.visibility = "visible";
         cargoStatus.textContent = `Cargo mass too heavy for launch`;
         return false;
     } else {
         launchStatusText.textContent = "Shuttle is ready for launch";
-        launchStatusStyle.style.color = "green";
-        list.style.visibility = "hidden";
+        launchStatusStyle.style.color = "rgb(65, 159, 106)";
+        listVar.style.visibility = "visible";
         return true;
     }
 }
